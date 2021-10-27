@@ -22,7 +22,7 @@ const COLORS = {
 };
 
 // Read rankings from csv
-d3.csv('/rankings.csv').then(data => {
+d3.csv('/nwsl-standings/rankings.csv').then(data => {
     drawChart(data);
 });
 
@@ -77,7 +77,7 @@ function drawChart(data) {
             .attr('height', IMAGE_RADIUS * 2)
             .attr('patternUnits', 'userSpaceOnUse')
             .append('svg:image')
-            .attr('xlink:href', `/logos/${team['Team'].replace(/\s+/g, '')}.png`)
+            .attr('xlink:href', `/nwsl-standings/logos/${team['Team'].replace(/\s+/g, '')}.png`)
             .attr('width', IMAGE_RADIUS * 2)
             .attr('height', IMAGE_RADIUS * 2)
             .attr('x', 0)
