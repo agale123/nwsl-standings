@@ -102,11 +102,8 @@ function drawChart(data) {
                 const focused = d.target.id;
                 document.getElementById(`line-${team['Team']}`).classList.add('focused');
                 document.body.classList.add('focus-mode');
-                console.log('hover');
-                console.log(d);
              })
              .on("mouseout", function (d) {
-                console.log('unhover')
                 const focused = d.target.id;
                 document.getElementById(`line-${team['Team']}`).classList.remove('focused');
                 document.body.classList.remove('focus-mode');
