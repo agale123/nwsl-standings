@@ -65,6 +65,7 @@ function drawChart(data) {
         const path = svg.append('path')
             .data([line])
             .attr('class', 'line')
+            .attr('id', `line-${team['Team']}`)
             .style('stroke', COLORS[team['Team']])
             .style('stroke-width', '4px')
             .style('fill', 'none')
@@ -94,8 +95,22 @@ function drawChart(data) {
             .attr('cx', IMAGE_RADIUS)
             .attr('cy', IMAGE_RADIUS)
             .attr('r', IMAGE_RADIUS)
+            .attr('id', team['Team'])
             .style('fill', '#fff')
-            .style('fill', `url(#avatar_${index})`);
+            .style('fill', `url(#avatar_${index})`)
+            .on("mouseover", (d) => {
+                const focused = d.target.id;
+                document.getElementById(`line-${team['Team']}`).classList.add('focused');
+                document.body.classList.add('focus-mode');
+                console.log('hover');
+                console.log(d);
+             })
+             .on("mouseout", function (d) {
+                console.log('unhover')
+                const focused = d.target.id;
+                document.getElementById(`line-${team['Team']}`).classList.remove('focused');
+                document.body.classList.remove('focus-mode');
+             });
 
         // Animate line
         const totalLength = path.node().getTotalLength();
